@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder db = dbf.newDocumentBuilder();
-            InputStream is = getAssets().open("debriefing_2023_11111111111111111.xml");
+            InputStream is = getAssets().open("XML PATH");
             Document document = db.parse(is);
             document.getDocumentElement().normalize();
-            NodeList nodeList = document.getElementsByTagName("RELEASE");
+            NodeList nodeList = document.getElementsByTagName("XML STATRING TAG");
             // document builder ile okunan veriler liste şeklinde erişilebilmesi
             // amacıyla belirlenen tag'e sahip elementler listeye aktarılır
             Node elemNode = nodeList.item(0);
@@ -92,17 +92,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPreItem(Node node){
         Element element = (Element) node;
-        pre.setPRE_INDEX(Integer.parseInt(element.getElementsByTagName("PRE_INDEX").item(0).getTextContent()));
-        pre.setLAT(Double.parseDouble(element.getElementsByTagName("LAT").item(0).getTextContent()));
-        pre.setLON(Double.parseDouble(element.getElementsByTagName("LON").item(0).getTextContent()));
-        pre.setELEV(Double.parseDouble(element.getElementsByTagName("ELEV").item(0).getTextContent()));
-        pre.setIMP_ANG(Double.parseDouble(element.getElementsByTagName("IMP_ANG").item(0).getTextContent()));
-        pre.setDIRECT_ATTACK(Boolean.parseBoolean(element.getElementsByTagName("DIRECT_ATTACK").item(0).getTextContent()));
-        pre.setIMP_AZ(Double.parseDouble(element.getElementsByTagName("IMP_AZ").item(0).getTextContent()));
-        //pre.setROB(Double.parseDouble(element.getElementsByTagName("ROB").item(0).getTextContent()));
-        //pre.setIR_MSL_ALT(Double.parseDouble(element.getElementsByTagName("IR_MSL_ALT").item(0).getTextContent()));
-        pre.setIRMAK_HEADING(Double.parseDouble(element.getElementsByTagName("IRMAK_HEADING").item(0).getTextContent()));
-        pre.setIRMAK_LEN(Double.parseDouble(element.getElementsByTagName("IRMAK_LEN").item(0).getTextContent()));
+        // alınan element üzerinden verilere erişilecek yer
+        element.getElementsByTagName("DATA XML TAG").item(0/*VERİ İÇERİSİNDE ALT ÖZELLİKLER VAR İSE BURADAN ERİŞİLECEK*/).getTextContent()
 
         preArrayList.add(pre);
     }
